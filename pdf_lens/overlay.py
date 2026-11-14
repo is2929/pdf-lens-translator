@@ -43,7 +43,7 @@ class PDFTranslationOverlay(QWidget):
     PAD_X = 6
     PAD_Y = 5
 
-    def __init__(self, pdf_path, src_lang="auto", dest_lang="es", ocr_lang="eng", group_by="paragraph"):
+    def __init__(self, pdf_path, src_lang="auto", dest_lang="es", ocr_lang="eng", group_by="line"):
         super().__init__()
         self.doc = fitz.open(pdf_path)
         self.src_lang = src_lang

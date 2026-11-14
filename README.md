@@ -34,7 +34,7 @@ pip install -r requirements.txt
 ```bash
 python main.py documento.pdf
 python main.py documento.pdf --dest en --ocr-lang spa      # texto en español → inglés
-python main.py documento.pdf --ocr-lang eng+fra --group-by line
+python main.py documento.pdf --ocr-lang eng+fra
 ```
 
 | Opción | Descripción |
@@ -42,7 +42,7 @@ python main.py documento.pdf --ocr-lang eng+fra --group-by line
 | `--src` | Idioma de origen (`auto` por defecto) |
 | `--dest` | Idioma de destino (`es` por defecto) |
 | `--ocr-lang` | Idioma(s) de Tesseract (`eng`, `spa`, `eng+fra`…). Debe estar instalado el paquete de idioma. |
-| `--group-by` | `paragraph` (por defecto, más rápido y mejor calidad) o `line` |
+| `--group-by` | `line` (por defecto: un recuadro por línea, igual que la versión original) o `paragraph` |
 
 1. Abre el PDF en tu visor favorito y coloca la lente sobre el texto.
 2. Pulsa ⚙️ y pega tu API key de Gemini.
@@ -74,10 +74,9 @@ Para borrarla: abre ⚙️, vacía el campo y pulsa **Save**.
 | | Lotes en paralelo y salida JSON estructurada (sin parseo frágil) |
 | | `thinking` desactivado en modelos Flash (menor latencia) |
 | | Textos sin letras (números, símbolos) no se envían a la API |
-| | Traducción por párrafo: menos elementos, más contexto |
 | | Respaldo en paralelo y sin `sleep` entre peticiones |
 | OCR | Se omite todo el proceso si la pantalla no cambió |
-| | Tesseract en modo LSTM (`--oem 1`) y reescalado bicúbico |
+| | Tesseract en modo LSTM (`--oem 1`) |
 | | Preprocesado en el hilo de fondo; menor espera de captura |
 | Asistente IA | Respuesta en *streaming* (se ve el texto desde el primer fragmento) |
 | | Cliente de Gemini reutilizado y `thinking` desactivado en Flash |

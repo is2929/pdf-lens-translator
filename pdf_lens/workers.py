@@ -63,7 +63,7 @@ class ProcessWorker(QThread):
     result_ready = pyqtSignal(list, int, str)   # bloques, nº de textos OCR, último error
     OCR_SCALE = 2
 
-    def __init__(self, gray_img, src, dest, api_key, model_name, ocr_lang="eng", group_by="paragraph"):
+    def __init__(self, gray_img, src, dest, api_key, model_name, ocr_lang="eng", group_by="line"):
         super().__init__()
         self.gray_img = gray_img
         self.src = src
@@ -106,7 +106,7 @@ class ProcessWorker(QThread):
         try:
             s = self.OCR_SCALE
             img = ImageOps.autocontrast(self.gray_img)
-            resample = getattr(Image, "Resampling", Image).BICUBIC
+            resample = getattr(Image, "Resampling", Image).LANCZOS
             img = img.resize((img.width * s, img.height * s), resample)
 
             # OEM 1 = solo LSTM (más rápido que el modo por defecto)

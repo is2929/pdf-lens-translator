@@ -22,7 +22,7 @@ def _has_letters(text: str) -> bool:
 
 
 class Translator:
-    CHUNK_SIZE = 25        # textos por petición a Gemini
+    CHUNK_SIZE = 40        # textos por petición a Gemini
     MAX_WORKERS = 4        # peticiones Gemini en paralelo
     FALLBACK_WORKERS = 6   # peticiones de respaldo en paralelo
     CACHE_MAX = 5000

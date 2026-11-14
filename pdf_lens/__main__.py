@@ -29,8 +29,9 @@ def main(argv=None):
     parser.add_argument("--dest", default="es", help="Idioma de destino (por defecto: es)")
     parser.add_argument("--ocr-lang", default="eng",
                         help="Idioma(s) de Tesseract, p. ej. eng, fra, eng+spa (por defecto: eng)")
-    parser.add_argument("--group-by", choices=["paragraph", "line"], default="paragraph",
-                        help="Granularidad de la traducción (paragraph es más rápido y de mejor calidad)")
+    parser.add_argument("--group-by", choices=["line", "paragraph"], default="line",
+                        help="Cómo se agrupa el texto: line (por defecto, igual que la versión original) "
+                             "o paragraph (menos bloques, pero la visualización cambia)")
     args = parser.parse_args(argv)
 
     missing = _missing_packages()
